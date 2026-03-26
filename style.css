@@ -108,4 +108,46 @@ h1, h2 {
     border: 1px solid rgba(255,255,255,0.1);
 }
 
-footer { text-align: center; padding: 40px; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+footer {
+    margin-top: 50px;
+    padding: 40px 10%;
+    background: rgba(10, 10, 15, 0.8);
+    border-top: 1px solid rgba(23, 243, 211, 0.1);
+    text-align: center;
+}
+
+.footer-legal {
+    margin-bottom: 20px;
+}
+
+.footer-legal a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin: 0 15px;
+    transition: 0.3s;
+    opacity: 0.7;
+}
+
+.footer-legal a:hover {
+    opacity: 1;
+    color: var(--accent);
+}
+
+.footer-tech {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.footer-tech i {
+    margin-right: 5px;
+    color: var(--accent);
+}
+
+.footer-copy {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 20px;
+    font-size: 0.9rem;
+}
