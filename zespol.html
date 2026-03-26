@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zespół | TechNova GitHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .team-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px 20px;
+            transition: 0.4s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            backdrop-filter: blur(10px);
+        }
+        .team-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(23, 243, 211, 0.15);
+        }
+        .avatar-glow {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #fff);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(23, 243, 211, 0.3);
+        }
+        .avatar-inner {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #0f0f1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--accent);
+        }
+        .social-mini {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .social-mini a {
+            color: var(--text-muted);
+            transition: 0.3s;
+            font-size: 1.4rem;
+        }
+        .social-mini a:hover { 
+            color: var(--accent); 
+            transform: scale(1.2);
+        }
+        .skill-tag-container {
+            margin: 15px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+        }
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <i class="fab fa-github"></i>
+            <span>TechNova GitHub</span>
+        </a>
+        <div>
+            <a href="index.html">Start</a>
+            <a href="o-nas.html">O nas</a>
+            <a href="projekty.html">Projekty</a>
+            <a href="zespol.html">Zespół</a>
+            <a href="kontakt.html">Kontakt</a>
+        </div>
+    </nav>
+
+    <section>
+        <h2>Poznaj Twórcę</h2>
+        <p style="color: var(--text-muted);">Jeden wizjoner, wiele ról. Technologia spotyka się z designem.</p>
+        
+        <div class="team-grid">
+            
+            <div class="team-card">
+                <div>
+                    <div class="avatar-glow">
+                        <div class="avatar-inner">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <h3>Kacper Gnyp</h3>
+                    <p style="color:var(--accent); font-weight: bold; letter-spacing: 1px;">LEAD DEVELOPER</p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Architekt rozwiązań TechNova. Odpowiada za logikę, bezpieczeństwo i wydajność projektów takich jak Generator Haseł.</p>
+                    <div class="skill-tag-container">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Web Security</span>
+                        <span class="skill-tag">GitHub</span>
+                    </div>
+                </div>
+                <div class="social-mini">
+                    <a href="https://www.instagram.com/jest_fajnie09/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@technova.github" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.threads.net/@jest_fajnie09" target="_blank"><i class="fa-brands fa-threads"></i></a>
+                </div>
+            </div>
+
+            <div class="team-card">
+                <div>
+                    <div class="avatar-glow">
+                        <div class="avatar-inner">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                    </div>
+                    <h3>Kacper Gnyp</h3>
+                    <p style="color:var(--accent); font-weight: bold; letter-spacing: 1px;">UI/UX DESIGNER</p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Pasjonat nowoczesnej estetyki. Dba o to, aby interfejsy TechNova były responsywne, ciemne i przejrzyste.</p>
+                    <div class="skill-tag-container">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">CSS Art</span>
+                        <span class="skill-tag">Clean UI</span>
+                    </div>
+                </div>
+                <div class="social-mini">
+                    <a href="https://www.instagram.com/jest_fajnie09/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@technova.github" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.threads.net/@jest_fajnie09" target="_blank"><i class="fa-brands fa-threads"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 TechNova GitHub.io</p>
+    </footer>
+</body>
+</html>

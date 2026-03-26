@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O nas | TechNova GitHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .about-hero {
+            padding: 60px 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Sekcja Wartości */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+        .value-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(23, 243, 211, 0.1);
+            transition: 0.3s;
+        }
+        .value-card:hover {
+            background: rgba(23, 243, 211, 0.05);
+            border-color: var(--accent);
+        }
+        .value-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        /* Sekcja Timeline (Oś czasu) */
+        .timeline {
+            margin-top: 80px;
+            position: relative;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            padding-left: 30px;
+            border-left: 2px solid rgba(23, 243, 211, 0.3);
+        }
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -39px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+        .timeline-date {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        .timeline-content h4 { margin: 5px 0; color: #fff; }
+        .timeline-content p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <i class="fab fa-github"></i>
+            <span>TechNova GitHub</span>
+        </a>
+        <div>
+            <a href="index.html">Start</a>
+            <a href="o-nas.html">O nas</a>
+            <a href="projekty.html">Projekty</a>
+            <a href="zespol.html">Zespół</a>
+            <a href="kontakt.html">Kontakt</a>
+        </div>
+    </nav>
+
+    <section>
+        <div class="about-hero">
+            <h2>Wizja TechNova</h2>
+            <p style="font-size: 1.2rem; line-height: 1.6;">
+                TechNova to nie tylko zbiór skryptów na GitHubie. To idea tworzenia oprogramowania, które jest transparentne, bezpieczne i dostępne dla każdego. Wierzymy, że kod ma moc zmieniania codzienności.
+            </p>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Prywatność</h3>
+                <p>Nasze narzędzia przetwarzają dane lokalnie w Twojej przeglądarce. Nigdy nie widzimy Twoich haseł ani danych.</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-unlock-alt"></i>
+                <h3>Open Source</h3>
+                <p>Wierzymy w otwarty kod. Każdy może zajrzeć do "silnika" naszych aplikacji i upewnić się, jak działają.</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Wydajność</h3>
+                <p>Optymalizujemy kod tak, aby działał błyskawicznie na każdym urządzeniu – od smartfona po komputer stacjonarny.</p>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 100px;">Nasza Droga</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">Styczeń 2026</div>
+                <div class="timeline-content">
+                    <h4>Narodziny Koncepcji</h4>
+                    <p>Powstanie pierwszej idei TechNova jako centralnego miejsca dla bezpiecznych narzędzi webowych.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Luty 2026</div>
+                <div class="timeline-content">
+                    <h4>Premiera Generatora Tożsamości</h4>
+                    <p>Uruchomienie pierwszego dużego projektu, który zyskał uznanie wśród testerów oprogramowania.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">Marzec 2026</div>
+                <div class="timeline-content">
+                    <h4>Rozbudowa Ekosystemu</h4>
+                    <p>Wprowadzenie Generatora Haseł i konsolidacja wszystkich projektów pod wspólną marką TechNova GitHub.</p>
+                </div>
+            </div>
+<div class="timeline-item">
+                <div class="timeline-date">Marzec 2026</div>
+                <div class="timeline-content">
+                    <h4>Stworzenie strony firmowej</h4>
+                    <p>Wprowadzenie strony firmowej na rynek GitHub.io</p>
+                </div>
+            </div>
+</div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 TechNova GitHub.io</p>
+    </footer>
+</body>
+</html>
