@@ -151,3 +151,103 @@ footer {
     padding-top: 20px;
     font-size: 0.9rem;
 }
+/* Styl Banera Cookies */
+.cookie-overlay {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: none; /* Ukryte domyślnie, JS pokazuje */
+    justify-content: center;
+    z-index: 9999;
+    animation: slideUp 0.5s ease-out;
+}
+
+.cookie-card {
+    background: rgba(26, 26, 46, 0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--accent);
+    border-radius: 20px;
+    padding: 25px;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.cookie-icon {
+    font-size: 2.5rem;
+    color: var(--accent);
+}
+
+.cookie-text h4 {
+    margin: 0 0 5px 0;
+    color: #fff;
+}
+
+.cookie-text p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.cookie-links {
+    margin-top: 10px;
+}
+
+.cookie-links a {
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.cookie-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-cookie {
+    background: var(--accent);
+    color: #1a1a2e;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-cookie:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--text-muted);
+    color: var(--text-muted);
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsywność dla mobile */
+@media (max-width: 600px) {
+    .cookie-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .cookie-actions {
+        width: 100%;
+    }
+}
