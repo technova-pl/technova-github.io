@@ -176,27 +176,67 @@
                     <a href="https://github.com/technova-pl/generatorhasel" class="btn-github" target="_blank"><i class="fab fa-github"></i> Kod</a>
                 </div>
             </div>
-
         </div>
 
-        <div class="coming-soon">
-            <i class="fas fa-rocket" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
-            <h3>Co dalej w TechNova?</h3>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 30px;">
-                Obecnie pracujemy nad narzędziami do analizy bezpieczeństwa plików oraz konwerterami danych typu "privacy-first". Masz pomysł? Daj nam znać!
+<footer>
+    <div class="footer-content">
+        <div class="footer-legal">
+            <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
+            <a href="regulamin.html">Regulamin</a>
+            <a href="rodo.html">Informacja RODO</a>
+        </div>
+
+        <div class="footer-tech">
+            <span><i class="fab fa-google"></i> Monitorowane przez Google Analytics & Search Console</span>
+            <br>
+            <span><i class="fas fa-bolt"></i> Chronione i optymalizowane przez Cloudflare</span>
+        </div>
+
+        <div class="footer-copy">
+            <p>&copy; 2026 TechNova GitHub. Created by <strong>Kacper Gnyp</strong>.</p>
+            <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 5px;">
+                Wszystkie generatory działają lokalnie (Client-Side) dla zapewnienia maksymalnej prywatności.
             </p>
-            <a href="kontakt.html" class="btn-github">Zaproponuj projekt</a>
         </div>
-    </section>
+    </div>
+</footer>
 
-    <footer>
-        <div style="margin-bottom: 15px;">
-            <a href="polityka-prywatnosci.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.8rem;">Polityka Prywatności</a>
-            <a href="regulamin.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.8rem;">Regulamin</a>
-            <a href="rodo.html" style="color: var(--text-muted); text-decoration: none; margin: 0 10px; font-size: 0.8rem;">RODO</a>
+<div id="cookie-banner" class="cookie-overlay">
+    <div class="cookie-card">
+        <div class="cookie-icon">
+            <i class="fas fa-cookie-bite"></i>
         </div>
-        <p>&copy; 2026 TechNova GitHub. Created by Kacper Gnyp.</p>
-    </footer>
+        <div class="cookie-text">
+            <h4>Prywatność i Pliki Cookies</h4>
+            <p>Używamy Google Analytics i Cloudflare, aby zrozumieć, jak korzystasz z naszej strony. Klikając "Akceptuję", wyrażasz zgodę na przetwarzanie danych analitycznych.</p>
+            <div class="cookie-links">
+                <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
+                <a href="rodo.html">RODO</a>
+            </div>
+        </div>
+        <div class="cookie-actions">
+            <button onclick="acceptCookies()" class="btn-cookie">Akceptuję</button>
+            <button onclick="closeBanner()" class="btn-outline">Zamknij</button>
+        </div>
+    </div>
+</div>
 
+<script>
+    function acceptCookies() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+        console.log("Cookies zaakceptowane.");
+    }
+
+    function closeBanner() {
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    window.onload = function() {
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookie-banner').style.display = 'flex';
+        }
+    };
+</script>
 </body>
 </html>
