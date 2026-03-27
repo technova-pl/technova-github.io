@@ -9,15 +9,17 @@
     <style>
         .projects-header {
             margin-bottom: 50px;
+            text-align: center;
         }
 
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
+            padding: 0 5%;
+            margin-bottom: 60px; /* Odstęp przed stopką */
         }
 
-        /* Ulepszona karta projektu */
         .project-card {
             background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -29,6 +31,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            backdrop-filter: blur(10px);
         }
 
         .project-card:hover {
@@ -37,7 +40,6 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        /* Badge statusu */
         .status-badge {
             position: absolute;
             top: 20px;
@@ -52,10 +54,12 @@
             font-weight: bold;
         }
 
-        .project-icon {
+        .project-icon-container {
             font-size: 2.5rem;
             color: var(--accent);
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
         }
 
         .project-card h3 {
@@ -68,58 +72,61 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             flex-grow: 1;
         }
 
-        /* Technologie w projekcie */
         .project-tech {
             display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 15px;
+            margin-bottom: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
         }
 
         .project-tech i {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-muted);
             transition: 0.3s;
         }
 
         .project-tech i:hover {
             color: var(--accent);
+            transform: scale(1.1);
         }
 
-        /* Sekcja "Wkrótce" */
-        .coming-soon {
-            margin-top: 80px;
-            padding: 60px;
-            background: linear-gradient(135deg, rgba(23, 243, 211, 0.02), transparent);
-            border-radius: 30px;
-            border: 1px dashed rgba(255,255,255,0.1);
+        .project-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
         }
 
         .btn-github {
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 10px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 0.95rem;
             transition: 0.3s;
+            background: transparent;
+            border: 2px solid rgba(23, 243, 211, 0.5);
+            color: #fff;
         }
 
         .btn-github:hover {
-            background: var(--accent);
-            color: #0f0f1a;
+            background: rgba(23, 243, 211, 0.1);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px rgba(23, 243, 211, 0.2);
+            color: var(--accent);
         }
     </style>
 </head>
 <body>
-
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NB3BDGJ3"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <nav>
         <a href="index.html" class="nav-logo">
             <i class="fab fa-github"></i>
@@ -137,106 +144,100 @@
     <section>
         <div class="projects-header">
             <h2>Nasze Repozytoria</h2>
-            <p style="color: var(--text-muted);">Przeglądaj narzędzia stworzone z myślą o bezpieczeństwie i wydajności.</p>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Bezpieczne narzędzia Open Source, zoptymalizowane pod kątem prywatności.</p>
         </div>
 
         <div class="project-grid">
-            
             <div class="project-card">
                 <span class="status-badge">Stable</span>
-                <div class="project-icon"><i class="fas fa-id-card"></i></div>
+                <div class="project-icon-container"><i class="fas fa-id-card"></i></div>
                 <h3>Generator Tożsamości</h3>
-                <p>Zaawansowane narzędzie do generowania realistycznych danych testowych. Idealne dla deweloperów i testerów QA szukających bezpiecznych danych do wypełniania baz.</p>
+                <p>Narzędzie do generowania realistycznych danych testowych. Całość operacji odbywa się lokalnie w Twojej przeglądarce.</p>
                 <div class="project-tech">
                     <i class="fab fa-js" title="JavaScript"></i>
                     <i class="fab fa-html5" title="HTML5"></i>
                     <i class="fab fa-css3-alt" title="CSS3"></i>
                 </div>
-                <div style="display: flex; gap: 10px;">
+                <div class="project-actions">
                     <a href="https://technova-pl.github.io/generatortozsamosci/" class="btn" target="_blank">Uruchom</a>
-                    <a href="https://github.com/technova-pl/generatortozsamosci" class="btn-github" target="_blank"><i class="fab fa-github"></i> Kod</a>
+                    <a href="https://github.com/technova-pl/generatortozsamosci" class="btn-github" target="_blank">
+                        <i class="fab fa-github"></i> Zobacz Kod
+                    </a>
                 </div>
             </div>
 
             <div class="project-card">
                 <span class="status-badge">Stable</span>
-                <div class="project-icon">
+                <div class="project-icon-container">
                     <i class="fas fa-lock"></i>
                     <i class="fas fa-key" style="font-size: 1.2rem; margin-left: -10px;"></i>
                 </div>
                 <h3>Generator Haseł</h3>
-                <p>Szyfrowanie i matematyczna precyzja w Twojej przeglądarce. Twórz niełamalne hasła z konfigurowalną długością i znakami specjalnymi.</p>
+                <p>Matematycznie generowane, bezpieczne hasła. Brak przesyłania danych na serwer gwarantuje pełną poufność.</p>
                 <div class="project-tech">
                     <i class="fab fa-js" title="JavaScript"></i>
                     <i class="fas fa-shield-alt" title="Security"></i>
                     <i class="fas fa-bolt" title="Fast"></i>
                 </div>
-                <div style="display: flex; gap: 10px;">
+                <div class="project-actions">
                     <a href="https://technova-pl.github.io/generatorhasel/" class="btn" target="_blank">Uruchom</a>
-                    <a href="https://github.com/technova-pl/generatorhasel" class="btn-github" target="_blank"><i class="fab fa-github"></i> Kod</a>
+                    <a href="https://github.com/technova-pl/generatorhasel" class="btn-github" target="_blank">
+                        <i class="fab fa-github"></i> Zobacz Kod
+                    </a>
                 </div>
             </div>
         </div>
+    </section>
 
-<footer>
-    <div class="footer-content">
-        <div class="footer-legal">
-            <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
-            <a href="regulamin.html">Regulamin</a>
-            <a href="rodo.html">Informacja RODO</a>
-        </div>
-
-        <div class="footer-tech">
-            <span><i class="fab fa-google"></i> Monitorowane przez Google Analytics & Search Console</span>
-            <br>
-            <span><i class="fas fa-bolt"></i> Chronione i optymalizowane przez Cloudflare</span>
-        </div>
-
-        <div class="footer-copy">
-            <p>&copy; 2026 TechNova GitHub. Created by <strong>Kacper Gnyp</strong>.</p>
-            <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 5px;">
-                Wszystkie generatory działają lokalnie (Client-Side) dla zapewnienia maksymalnej prywatności.
-            </p>
-        </div>
-    </div>
-</footer>
-
-<div id="cookie-banner" class="cookie-overlay">
-    <div class="cookie-card">
-        <div class="cookie-icon">
-            <i class="fas fa-cookie-bite"></i>
-        </div>
-        <div class="cookie-text">
-            <h4>Prywatność i Pliki Cookies</h4>
-            <p>Używamy Google Analytics i Cloudflare, aby zrozumieć, jak korzystasz z naszej strony. Klikając "Akceptuję", wyrażasz zgodę na przetwarzanie danych analitycznych.</p>
-            <div class="cookie-links">
+    <footer>
+        <div class="footer-content">
+            <div class="footer-legal">
                 <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
-                <a href="rodo.html">RODO</a>
+                <a href="regulamin.html">Regulamin</a>
+                <a href="rodo.html">Informacja RODO</a>
+            </div>
+            <div class="footer-tech">
+                <span><i class="fab fa-google"></i> Monitorowane przez Google Analytics & Search Console</span>
+                <br>
+                <span><i class="fas fa-bolt"></i> Chronione i optymalizowane przez Cloudflare</span>
+            </div>
+            <div class="footer-copy">
+                <p>&copy; 2026 TechNova GitHub. Created by <strong>Kacper Gnyp</strong>.</p>
             </div>
         </div>
-        <div class="cookie-actions">
-            <button onclick="acceptCookies()" class="btn-cookie">Akceptuję</button>
-            <button onclick="closeBanner()" class="btn-outline">Zamknij</button>
+    </footer>
+
+    <div id="cookie-banner" class="cookie-overlay">
+        <div class="cookie-card">
+            <div class="cookie-icon"><i class="fas fa-cookie-bite"></i></div>
+            <div class="cookie-text">
+                <h4>Prywatność i Pliki Cookies</h4>
+                <p>Używamy Google Analytics i Cloudflare. Klikając "Akceptuję", wyrażasz zgodę na analizę ruchu.</p>
+                <div class="cookie-links">
+                    <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
+                    <a href="rodo.html">RODO</a>
+                </div>
+            </div>
+            <div class="cookie-actions">
+                <button onclick="acceptCookies()" class="btn-cookie">Akceptuję</button>
+                <button onclick="closeBanner()" class="btn-outline">Zamknij</button>
+            </div>
         </div>
     </div>
-</div>
 
-<script>
-    function acceptCookies() {
-        localStorage.setItem('cookiesAccepted', 'true');
-        document.getElementById('cookie-banner').style.display = 'none';
-        console.log("Cookies zaakceptowane.");
-    }
-
-    function closeBanner() {
-        document.getElementById('cookie-banner').style.display = 'none';
-    }
-
-    window.onload = function() {
-        if (!localStorage.getItem('cookiesAccepted')) {
-            document.getElementById('cookie-banner').style.display = 'flex';
+    <script>
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-banner').style.display = 'none';
         }
-    };
-</script>
+        function closeBanner() {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+        window.onload = function() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-banner').style.display = 'flex';
+            }
+        };
+    </script>
 </body>
 </html>
