@@ -175,5 +175,43 @@
         </div>
     </div>
 </footer>
+
+<div id="cookie-banner" class="cookie-overlay">
+    <div class="cookie-card">
+        <div class="cookie-icon">
+            <i class="fas fa-cookie-bite"></i>
+        </div>
+        <div class="cookie-text">
+            <h4>Prywatność i Pliki Cookies</h4>
+            <p>Używamy Google Analytics i Cloudflare, aby zrozumieć, jak korzystasz z naszej strony. Klikając "Akceptuję", wyrażasz zgodę na przetwarzanie danych analitycznych.</p>
+            <div class="cookie-links">
+                <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
+                <a href="rodo.html">RODO</a>
+            </div>
+        </div>
+        <div class="cookie-actions">
+            <button onclick="acceptCookies()" class="btn-cookie">Akceptuję</button>
+            <button onclick="closeBanner()" class="btn-outline">Zamknij</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function acceptCookies() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        document.getElementById('cookie-banner').style.display = 'none';
+        console.log("Cookies zaakceptowane.");
+    }
+
+    function closeBanner() {
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    window.onload = function() {
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.getElementById('cookie-banner').style.display = 'flex';
+        }
+    };
+</script>
 </body>
 </html>
