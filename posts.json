@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Dlaczego Client-Side to przyszłość?",
+    "date": "28.03.2026",
+    "category": "Prywatność",
+    "excerpt": "Dowiedz się, dlaczego przetwarzanie danych w przeglądarce to najbezpieczniejszy model.",
+    "content": "Tutaj wpisz całą treść posta. Możesz używać tagów <br> dla nowej linii."
+  },
+  {
+    "id": 2,
+    "title": "Bezpieczeństwo w chmurze Cloudflare",
+    "date": "25.03.2026",
+    "category": "Security",
+    "excerpt": "Jak chronimy nasze narzędzia przed atakami DDoS.",
+    "content": "Treść drugiego posta..."
+  }
+]
