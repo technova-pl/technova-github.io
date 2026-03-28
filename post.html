@@ -3,70 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="69808941280.png">
     <title>Artykuł | TechNova</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .news-container { max-width: 850px; margin: 40px auto; padding: 0 25px 100px; text-align: left; opacity: 0; }
-        .news-container.animate-in { animation: fadeInUp 0.8s ease-out forwards; }
-        .breadcrumb { font-size: 0.8rem; color: #a0a0b8; margin-bottom: 25px; text-transform: uppercase; }
-        .breadcrumb a { color: #17f3d3; text-decoration: none; }
-        #post-title { font-size: 3.2rem; color: #fff; line-height: 1.1; font-weight: 800; margin-bottom: 25px; }
-        .post-meta-bar { display: flex; align-items: center; gap: 15px; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .author-avatar { width: 45px; height: 45px; border-radius: 50%; background: rgba(23,243,211,0.1); border: 1px solid #17f3d3; display: flex; align-items: center; justify-content: center; color: #17f3d3; font-weight: bold; }
-        #post-lead { font-size: 1.4rem; font-weight: 700; line-height: 1.6; color: #fff; margin-bottom: 40px; border-left: 4px solid #17f3d3; padding-left: 20px; }
-        #post-body { line-height: 1.9; font-size: 1.15rem; color: #d1d1e0; }
-        #post-body h2 { color: #fff; margin: 45px 0 20px; font-size: 2rem; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        body { background-color: #0d1117; color: #c9d1d9; }
+        
+        .article-wrapper { max-width: 1100px; margin: 0 auto; padding: 40px 20px; opacity: 0; }
+        .article-wrapper.show { animation: fadeIn 0.6s ease-in forwards; }
+
+        /* Nagłówek Newsowy - Szeroki */
+        .article-header { border-bottom: 1px solid #30363d; padding-bottom: 30px; margin-bottom: 40px; }
+        .post-label { color: #58a6ff; font-weight: 800; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 15px; display: block; }
+        #post-title { font-size: 3.8rem; color: #f0f6fc; line-height: 1.1; font-weight: 800; margin: 10px 0 25px; letter-spacing: -2px; }
+        
+        .meta-strip { display: flex; align-items: center; gap: 20px; color: #8b949e; font-size: 0.95rem; }
+        .author-box { display: flex; align-items: center; gap: 10px; color: #f0f6fc; font-weight: 600; }
+        .author-box img { width: 35px; height: 35px; border-radius: 50%; border: 2px solid #58a6ff; }
+
+        /* Treść od lewej do prawej */
+        .main-layout { display: grid; grid-template-columns: 1fr; gap: 40px; }
+        
+        #post-lead { font-size: 1.5rem; line-height: 1.5; color: #f0f6fc; font-weight: 700; margin-bottom: 35px; border-left: 5px solid #58a6ff; padding-left: 25px; text-align: justify; }
+        
+        #post-body { font-size: 1.2rem; line-height: 1.8; text-align: left; }
         #post-body p { margin-bottom: 25px; }
-        #post-body ul { margin-bottom: 30px; list-style: none; padding-left: 0; }
-        #post-body li { position: relative; padding-left: 30px; margin-bottom: 12px; }
-        #post-body li::before { content: '✓'; position: absolute; left: 0; color: #17f3d3; font-weight: bold; }
-        #post-loader { text-align: center; padding: 100px 0; color: #17f3d3; font-size: 2rem; }
+        #post-body h2 { font-size: 2.2rem; color: #f0f6fc; margin: 50px 0 20px; border-top: 1px solid #30363d; padding-top: 30px; }
+        
+        /* Listy punktowane newsowe */
+        #post-body ul { list-style: none; padding: 0; margin: 30px 0; }
+        #post-body li { padding: 15px 20px; background: #161b22; border: 1px solid #30363d; border-radius: 6px; margin-bottom: 10px; display: flex; align-items: center; }
+        #post-body li::before { content: "●"; color: #58a6ff; font-weight: bold; margin-right: 15px; }
+
+        #post-loader { text-align: center; padding: 100px; color: #58a6ff; font-size: 3rem; }
+
+        @media (max-width: 900px) {
+            #post-title { font-size: 2.5rem; }
+            #post-lead { font-size: 1.2rem; }
+        }
     </style>
 </head>
 <body>
     <nav><a href="index.html" class="nav-logo"><span>TechNova</span></a></nav>
 
-    <main>
-        <div id="post-loader"><i class="fas fa-spinner fa-spin"></i></div>
-        <div id="post-display" class="news-container">
-            <div class="breadcrumb"><a href="blog.html">Blog</a> <span>/</span> <span id="post-category-bc"></span></div>
+    <div id="post-loader"><i class="fas fa-circle-notch fa-spin"></i></div>
+
+    <main id="post-display" class="article-wrapper">
+        <header class="article-header">
+            <span class="post-label" id="post-category">Kategoria</span>
             <h1 id="post-title"></h1>
-            <div class="post-meta-bar">
-                <div class="author-avatar">TN</div>
-                <div><div style="color: #fff; font-weight: bold;">Redakcja TechNova</div><div id="post-date"></div></div>
+            <div class="meta-strip">
+                <div class="author-box">
+                    <div style="background:#58a6ff; width:35px; height:35px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#0d1117">KG</div>
+                    Kacper Gnyp
+                </div>
+                <span>•</span>
+                <span id="post-date"></span>
             </div>
+        </header>
+
+        <div class="main-layout">
             <div id="post-lead"></div>
-            <section id="post-body"></section>
+            <article id="post-body"></article>
         </div>
     </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const slug = localStorage.getItem('selectedPostSlug');
-            if (!slug) { window.location.href = 'blog.html'; return; }
+            if(!slug) { window.location.href = 'blog.html'; return; }
 
             fetch('posts.json').then(res => res.json()).then(posts => {
                 const post = posts.find(p => p.slug === slug);
-                if (post) {
+                if(post) {
                     const d = new Date(post.date);
                     const fDate = `${d.getDate().toString().padStart(2,'0')}.${(d.getMonth()+1).toString().padStart(2,'0')}.${d.getFullYear()}r., ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
                     
-                    document.getElementById('post-category-bc').innerText = post.category;
+                    document.getElementById('post-category').innerText = post.category;
                     document.getElementById('post-title').innerText = post.title;
                     document.getElementById('post-date').innerText = fDate;
                     document.getElementById('post-lead').innerText = post.excerpt;
-
-                    // Sklejanie treści z tablicy lub wyświetlanie tekstu
+                    
                     const body = document.getElementById('post-body');
                     body.innerHTML = Array.isArray(post.content) ? post.content.join('') : post.content;
 
                     document.getElementById('post-loader').style.display = 'none';
-                    const display = document.getElementById('post-display');
-                    display.style.display = 'block';
-                    setTimeout(() => display.classList.add('animate-in'), 50);
+                    const wrapper = document.getElementById('post-display');
+                    wrapper.classList.add('show');
                 }
             });
         });
