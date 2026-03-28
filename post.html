@@ -4,109 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="69808941280.png">
-    <title>Artykuł | TechNova GitHub</title>
+    <title>Wiadomości | TechNova GitHub</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Kontener artykułu - węższy dla lepszego skupienia wzroku */
-        .article-container {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 0 25px;
+        /* NOWY UKŁAD INSPIROWANY PORTALEM NOWINY24 */
+        .news-container {
+            max-width: 900px; /* Nieco szerzej, jak na portalu */
+            margin: 40px auto;
+            padding: 0 20px 80px;
             text-align: left;
         }
 
-        .article-header {
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(23, 243, 211, 0.1);
-            padding-bottom: 30px;
-        }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: bold;
-            margin-bottom: 30px;
-            transition: 0.3s;
-        }
-
-        .back-link:hover {
-            transform: translateX(-5px);
-        }
-
-        .post-meta-top {
-            color: var(--accent);
+        /* Okruszki (Breadcrumbs) - jak na nowiny24 */
+        .breadcrumb {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
             text-transform: uppercase;
-            font-size: 0.85rem;
             letter-spacing: 1px;
-            font-weight: bold;
+        }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .breadcrumb span { margin: 0 5px; color: rgba(255,255,255,0.2); }
+
+        .article-header {
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 20px;
         }
 
+        /* GIGANTYCZNY TYTUŁ NEWSOWY */
         #post-title {
-            font-size: 3rem;
+            font-size: 3.5rem; /* Bardzo duży, pogrubiony */
             color: #fff;
-            margin: 15px 0;
-            line-height: 1.2;
+            margin: 10px 0 20px;
+            line-height: 1.1;
+            font-weight: 800;
         }
 
-        .post-date {
+        /* Belka autora i daty */
+        .post-meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             color: var(--text-muted);
             font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 15px;
+        }
+        .author-avatar {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex; align-items: center; justify-content: center;
+            color: #0f0f1a; font-weight: bold;
+        }
+
+        /* POGRUBIONY WSTĘP (LEAD) - KLUCZ Z NOWINY24 */
+        #post-lead {
+            font-size: 1.4rem; /* Większy niż reszta tekstu */
+            font-weight: 700; /* Pogrubiony */
+            line-height: 1.6;
+            color: #fff; /* Jaśniejszy kolor */
+            margin-bottom: 35px;
+            padding-left: 15px;
+            border-left: 4px solid var(--accent); /* Akcent z boku */
         }
 
         /* Stylizacja treści właściwej */
         #post-body {
-            line-height: 1.8;
+            line-height: 1.9; /* Duża interlinia dla czytelności */
             font-size: 1.15rem;
             color: var(--text-main);
         }
 
-        #post-body p {
-            margin-bottom: 25px;
-        }
+        #post-body p { margin-bottom: 25px; }
 
         #post-body h2 {
             color: #fff;
-            margin-top: 45px;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-
-        #post-body blockquote {
-            border-left: 4px solid var(--accent);
-            padding: 15px 25px;
-            background: rgba(23, 243, 211, 0.03);
-            font-style: italic;
-            margin: 40px 0;
-            color: var(--text-muted);
-            border-radius: 0 10px 10px 0;
-        }
-
-        #post-body ul {
-            margin-bottom: 25px;
-            padding-left: 25px;
-        }
-
-        #post-body li {
-            margin-bottom: 10px;
+            margin-top: 50px; margin-bottom: 20px;
+            font-size: 2rem;
+            font-weight: 700;
+            border-bottom: 2px solid rgba(23, 243, 211, 0.1);
+            padding-bottom: 10px;
+            display: inline-block;
         }
 
         /* Loader */
-        #post-loader {
-            text-align: center;
-            padding: 100px 0;
-            color: var(--accent);
-            font-size: 2.5rem;
-        }
+        #post-loader { text-align: center; padding: 100px 0; color: var(--accent); font-size: 2.5rem; }
 
+        /* Responsywność dla telefonów */
         @media (max-width: 768px) {
-            #post-title { font-size: 2.2rem; }
-            .article-container { margin: 30px auto; }
+            #post-title { font-size: 2.5rem; }
+            #post-lead { font-size: 1.2rem; }
+            .news-container { margin: 20px auto; }
         }
     </style>
 </head>
@@ -120,25 +113,34 @@
         <div>
             <a href="index.html">Start</a>
             <a href="blog.html">Blog</a>
-            <a href="projekty.html">Projekty</a>
         </div>
     </nav>
 
-    <main class="article-container">
-        <a href="blog.html" class="back-link">
-            <i class="fas fa-arrow-left"></i> Wróć do bloga
-        </a>
-
+    <main class="news-container">
         <div id="post-loader">
-            <i class="fas fa-circle-notch fa-spin"></i>
+            <i class="fas fa-spinner fa-spin"></i>
         </div>
 
         <div id="post-display" style="display: none;">
+            
+            <div class="breadcrumb">
+                <a href="index.html">TechNova</a> <span>/</span> <a href="blog.html">Blog</a> <span>/</span> <span id="post-category-bc">Kategoria</span>
+            </div>
+
             <header class="article-header">
-                <div class="post-meta-top" id="post-category">Kategoria</div>
-                <h1 id="post-title">Ładowanie tytułu...</h1>
-                <div class="post-date" id="post-date">Data publikacji</div>
+                <h1 id="post-title">Ładowanie tytułu newsa...</h1>
+                
+                <div class="post-meta-bar">
+                    <div class="author-avatar">TN</div>
+                    <div>
+                        <div style="color: #fff; font-weight: bold;">Redakcja TechNova</div>
+                        <div id="post-date">28 Marca 2026</div>
+                    </div>
+                </div>
             </header>
+
+            <div id="post-lead">
+                </div>
 
             <section id="post-body">
                 </section>
@@ -155,48 +157,35 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Pobieramy "slug" zapamiętany po kliknięciu w blog.html
             const selectedSlug = localStorage.getItem('selectedPostSlug');
-            
-            // Jeśli ktoś wejdzie bezpośrednio w post.html bez wybrania posta, wróć do bloga
-            if (!selectedSlug) {
-                window.location.href = 'blog.html';
-                return;
-            }
+            if (!selectedSlug) { window.location.href = 'blog.html'; return; }
 
-            // Pobieramy dane z pliku JSON
             fetch('posts.json')
-                .then(response => {
-                    if (!response.ok) throw new Error("Błąd bazy danych");
-                    return response.json();
-                })
+                .then(response => response.json())
                 .then(posts => {
-                    // Szukamy posta o odpowiednim slugu
                     const post = posts.find(p => p.slug === selectedSlug);
 
                     if (post) {
-                        // Aktualizacja meta-danych strony
-                        document.title = `${post.title} | TechNova Blog`;
+                        document.title = `${post.title} | TechNova Wiadomości`;
                         
-                        // Wstrzykiwanie treści
-                        document.getElementById('post-category').innerText = post.category;
+                        // Wypełniamy dane
+                        document.getElementById('post-category-bc').innerText = post.category;
                         document.getElementById('post-title').innerText = post.title;
                         document.getElementById('post-date').innerText = post.date;
+                        
+                        // 'excerpt' z JSON wkładamy do 'post-lead'
+                        document.getElementById('post-lead').innerText = post.excerpt;
+                        
+                        // 'content' z JSON wkładamy do 'post-body'
                         document.getElementById('post-body').innerHTML = post.content;
 
-                        // Płynne przełączenie widoku
                         document.getElementById('post-loader').style.display = 'none';
                         document.getElementById('post-display').style.display = 'block';
                     } else {
-                        document.getElementById('post-loader').innerHTML = "<p>Przepraszamy, nie znaleziono takiego artykułu.</p>";
+                        document.getElementById('post-loader').innerHTML = "Wpis nie został odnaleziony.";
                     }
-                })
-                .catch(err => {
-                    console.error("Błąd ładowania:", err);
-                    document.getElementById('post-loader').innerHTML = "<p>Błąd ładowania treści. Spróbuj odświeżyć stronę.</p>";
                 });
         });
     </script>
-
 </body>
 </html>
