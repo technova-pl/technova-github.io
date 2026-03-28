@@ -1,18 +1,18 @@
 [
   {
-    "slug": "client-side-przyszlosc",
-    "title": "Dlaczego Client-Side to przyszłość?",
-    "date": "28 marca 2026",
-    "category": "Technologia",
-    "excerpt": "Dowiedz się, dlaczego przetwarzanie danych bezpośrednio w przeglądarce użytkownika to najbezpieczniejszy model.",
-    "content": "<h2>Zero-Knowledge jako standard</h2><p>W tradycyjnym modelu aplikacje przesyłają Twoje dane na serwer. W modelu <b>Client-Side</b>, kod wykonuje się lokalnie w Twojej przeglądarce. Serwer nigdy nie widzi Twoich haseł czy danych osobowych.</p><h2>Dlaczego to jest szybsze?</h2><p>Brak ciągłej komunikacji z serwerem eliminuje opóźnienia sieciowe. Wszystko dzieje się natychmiast, co poprawia komfort pracy.</p><blockquote>Prywatność to nie tylko brak śledzenia, to także brak możliwości podejrzenia Twoich danych przez administratora.</blockquote>"
+    "slug": "planowane-wylaczenia-pradu-podkarpacie",
+    "title": "Czy będą wyłączenia prądu 28.03 w Podkarpackiem? Sprawdź listę",
+    "date": "2026-03-28 23:45",
+    "category": "SERWIS INFORMACYJNY",
+    "excerpt": "PGE Dystrybucja informuje o planowanych przerwach w dostawie energii elektrycznej. Utrudnienia mogą potrwać nawet kilka godzin. Zobacz, czy Twoja miejscowość znajduje się na liście.",
+    "content": "<h2>Gdzie nie będzie prądu?</h2><p>Zgodnie z najnowszym komunikatem, prace konserwacyjne obejmą powiat rzeszowski oraz łańcucki. Przerwy są niezbędne dla modernizacji sieci przesyłowej.</p><h2>Harmonogram prac</h2><ul><li>Rzeszów, ul. Rejtana: 08:00 - 12:00</li><li>Nienadówka: 09:00 - 15:00</li><li>Łańcut, Centrum: 11:00 - 14:00</li></ul><p>Energetycy przypominają o konieczności zabezpieczenia urządzeń wrażliwych na nagłe skoki napięcia.</p>"
   },
   {
-    "slug": "cloudflare-ochrona",
-    "title": "Cloudflare i ochrona przed atakami",
-    "date": "25 marca 2026",
-    "category": "Bezpieczeństwo",
-    "excerpt": "Analiza technologii Edge Computing i jej wpływu na bezpieczeństwo naszych narzędzi.",
-    "content": "<h2>Jak działamy?</h2><p>Wykorzystujemy infrastrukturę Cloudflare, aby rozproszyć ruch. Dzięki temu nasze generatory są odporne na ataki typu DDoS.</p><h2>Globalna sieć</h2><p>Dzięki Edge Computing, nasza strona jest serwowana z najbliższego dla użytkownika centrum danych, co zapewnia prędkość ładowania poniżej 100ms.</p><ul><li>Wielowarstwowa ochrona WAF</li><li>Automatyczna optymalizacja obrazów</li><li>Certyfikaty SSL w standardzie</li></ul>"
+    "slug": "nowy-system-blogowy-technova",
+    "title": "TechNova wdraża nowy system publikacji treści",
+    "date": "2026-03-28 10:20",
+    "category": "TECHNOLOGIA",
+    "excerpt": "Nasz zespół zakończył prace nad dynamicznym systemem zarządzania treścią opartym na JSON. To milowy krok w szybkości działania serwisu.",
+    "content": "<h2>Szybkość przede wszystkim</h2><p>Nowy system eliminuje potrzebę generowania ciężkich stron PHP. Wszystko odbywa się po stronie klienta, co skraca czas ładowania o 70%.</p>"
   }
 ]
