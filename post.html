@@ -4,187 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="69808941280.png">
-    <title>Wiadomości | TechNova GitHub</title>
-    
+    <title>Artykuł | TechNova</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-
     <style>
-        /* NOWY UKŁAD INSPIROWANY PORTALEM NOWINY24 */
-        .news-container {
-            max-width: 900px; /* Nieco szerzej, jak na portalu */
-            margin: 40px auto;
-            padding: 0 20px 80px;
-            text-align: left;
-        }
-
-        /* Okruszki (Breadcrumbs) - jak na nowiny24 */
-        .breadcrumb {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .news-container { max-width: 850px; margin: 40px auto; padding: 0 20px 80px; text-align: left; }
+        .breadcrumb { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; text-transform: uppercase; }
         .breadcrumb a { color: var(--accent); text-decoration: none; }
-        .breadcrumb span { margin: 0 5px; color: rgba(255,255,255,0.2); }
-
-        .article-header {
-            margin-bottom: 30px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            padding-bottom: 20px;
-        }
-
-        /* GIGANTYCZNY TYTUŁ NEWSOWY */
-        #post-title {
-            font-size: 3.5rem; /* Bardzo duży, pogrubiony */
-            color: #fff;
-            margin: 10px 0 20px;
-            line-height: 1.1;
-            font-weight: 800;
-        }
-
-        /* Belka autora i daty */
-        .post-meta-bar {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 15px;
-        }
-        .author-avatar {
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            background: var(--accent);
-            display: flex; align-items: center; justify-content: center;
-            color: #0f0f1a; font-weight: bold;
-        }
-
-        /* POGRUBIONY WSTĘP (LEAD) - KLUCZ Z NOWINY24 */
-        #post-lead {
-            font-size: 1.4rem; /* Większy niż reszta tekstu */
-            font-weight: 700; /* Pogrubiony */
-            line-height: 1.6;
-            color: #fff; /* Jaśniejszy kolor */
-            margin-bottom: 35px;
-            padding-left: 15px;
-            border-left: 4px solid var(--accent); /* Akcent z boku */
-        }
-
-        /* Stylizacja treści właściwej */
-        #post-body {
-            line-height: 1.9; /* Duża interlinia dla czytelności */
-            font-size: 1.15rem;
-            color: var(--text-main);
-        }
-
-        #post-body p { margin-bottom: 25px; }
-
-        #post-body h2 {
-            color: #fff;
-            margin-top: 50px; margin-bottom: 20px;
-            font-size: 2rem;
-            font-weight: 700;
-            border-bottom: 2px solid rgba(23, 243, 211, 0.1);
-            padding-bottom: 10px;
-            display: inline-block;
-        }
-
-        /* Loader */
-        #post-loader { text-align: center; padding: 100px 0; color: var(--accent); font-size: 2.5rem; }
-
-        /* Responsywność dla telefonów */
-        @media (max-width: 768px) {
-            #post-title { font-size: 2.5rem; }
-            #post-lead { font-size: 1.2rem; }
-            .news-container { margin: 20px auto; }
-        }
+        #post-title { font-size: 3.2rem; color: #fff; line-height: 1.1; font-weight: 800; margin-bottom: 25px; }
+        .meta-info { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; margin-bottom: 30px; color: var(--text-muted); font-size: 0.9rem; }
+        #post-lead { font-size: 1.35rem; font-weight: 700; line-height: 1.6; color: #fff; margin-bottom: 35px; border-left: 4px solid var(--accent); padding-left: 20px; }
+        #post-body { line-height: 1.9; font-size: 1.15rem; color: var(--text-main); }
+        #post-body h2 { color: #fff; margin: 40px 0 20px; border-bottom: 1px solid rgba(23,243,211,0.2); padding-bottom: 10px; }
     </style>
 </head>
 <body>
-
-    <nav>
-        <a href="index.html" class="nav-logo">
-            <i class="fab fa-github"></i>
-            <span>TechNova GitHub</span>
-        </a>
-        <div>
-            <a href="index.html">Start</a>
-            <a href="blog.html">Blog</a>
-        </div>
-    </nav>
+    <nav><a href="index.html" class="nav-logo"><span>TechNova GitHub</span></a></nav>
 
     <main class="news-container">
-        <div id="post-loader">
-            <i class="fas fa-spinner fa-spin"></i>
-        </div>
-
-        <div id="post-display" style="display: none;">
-            
-            <div class="breadcrumb">
-                <a href="index.html">TechNova</a> <span>/</span> <a href="blog.html">Blog</a> <span>/</span> <span id="post-category-bc">Kategoria</span>
-            </div>
-
-            <header class="article-header">
-                <h1 id="post-title">Ładowanie tytułu newsa...</h1>
-                
-                <div class="post-meta-bar">
-                    <div class="author-avatar">TN</div>
-                    <div>
-                        <div style="color: #fff; font-weight: bold;">Redakcja TechNova</div>
-                        <div id="post-date">28 Marca 2026</div>
-                    </div>
-                </div>
-            </header>
-
-            <div id="post-lead">
-                </div>
-
-            <section id="post-body">
-                </section>
+        <div id="loader" style="text-align:center; padding: 50px; color: var(--accent);"><i class="fas fa-spinner fa-spin fa-2x"></i></div>
+        
+        <div id="content-area" style="display:none;">
+            <div class="breadcrumb"><a href="blog.html">Blog</a> <span>/</span> <span id="bc-cat"></span></div>
+            <h1 id="post-title"></h1>
+            <div class="meta-info">Redakcja TechNova | <span id="post-date"></span></div>
+            <div id="post-lead"></div>
+            <section id="post-body"></section>
         </div>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-copy">
-                <p>&copy; 2026 TechNova GitHub. Created by <strong>Kacper Gnyp</strong>.</p>
-            </div>
-        </div>
-    </footer>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const selectedSlug = localStorage.getItem('selectedPostSlug');
-            if (!selectedSlug) { window.location.href = 'blog.html'; return; }
+            const slug = localStorage.getItem('selectedPostSlug');
+            if(!slug) { window.location.href = 'blog.html'; return; }
 
-            fetch('posts.json')
-                .then(response => response.json())
-                .then(posts => {
-                    const post = posts.find(p => p.slug === selectedSlug);
-
-                    if (post) {
-                        document.title = `${post.title} | TechNova Wiadomości`;
-                        
-                        // Wypełniamy dane
-                        document.getElementById('post-category-bc').innerText = post.category;
-                        document.getElementById('post-title').innerText = post.title;
-                        document.getElementById('post-date').innerText = post.date;
-                        
-                        // 'excerpt' z JSON wkładamy do 'post-lead'
-                        document.getElementById('post-lead').innerText = post.excerpt;
-                        
-                        // 'content' z JSON wkładamy do 'post-body'
-                        document.getElementById('post-body').innerHTML = post.content;
-
-                        document.getElementById('post-loader').style.display = 'none';
-                        document.getElementById('post-display').style.display = 'block';
-                    } else {
-                        document.getElementById('post-loader').innerHTML = "Wpis nie został odnaleziony.";
-                    }
-                });
+            fetch('posts.json').then(res => res.json()).then(posts => {
+                const post = posts.find(p => p.slug === slug);
+                if(post) {
+                    const d = new Date(post.date);
+                    const fDate = `${d.getDate().toString().padStart(2,'0')}.${(d.getMonth()+1).toString().padStart(2,'0')}.${d.getFullYear()}r., ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+                    
+                    document.getElementById('bc-cat').innerText = post.category;
+                    document.getElementById('post-title').innerText = post.title;
+                    document.getElementById('post-date').innerText = fDate;
+                    document.getElementById('post-lead').innerText = post.excerpt;
+                    document.getElementById('post-body').innerHTML = post.content;
+                    
+                    document.getElementById('loader').style.display = 'none';
+                    document.getElementById('content-area').style.display = 'block';
+                }
+            });
         });
     </script>
 </body>
