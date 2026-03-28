@@ -15,12 +15,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* KONTENER - Kolumna na środku, ale treść wewnątrz DO LEWEJ */
         .news-container {
             max-width: 850px; 
-            margin: 40px auto; /* Centruje kolumnę na ekranie */
+            margin: 40px auto;
             padding: 0 25px 100px;
-            text-align: left; /* Wyrównanie treści do lewej */
+            text-align: left;
             opacity: 0; 
         }
 
@@ -34,7 +33,6 @@
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-align: left;
         }
         .breadcrumb a { color: var(--accent); text-decoration: none; }
         .breadcrumb span { margin: 0 8px; color: rgba(255,255,255,0.15); }
@@ -43,7 +41,6 @@
             margin-bottom: 40px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             padding-bottom: 30px;
-            text-align: left;
         }
 
         #post-title {
@@ -53,7 +50,6 @@
             line-height: 1.1;
             font-weight: 800;
             letter-spacing: -1px;
-            text-align: left;
         }
 
         .post-meta-bar {
@@ -62,7 +58,6 @@
             gap: 15px;
             color: var(--text-muted);
             font-size: 0.95rem;
-            justify-content: flex-start; /* Do lewej */
         }
 
         .author-avatar {
@@ -74,7 +69,6 @@
             color: var(--accent); font-weight: bold;
         }
 
-        /* POGRUBIONY LEAD - WYRÓWNANY DO LEWEJ */
         #post-lead {
             font-size: 1.4rem;
             font-weight: 700;
@@ -83,15 +77,12 @@
             margin-bottom: 45px;
             padding-left: 20px;
             border-left: 4px solid var(--accent);
-            text-align: left;
         }
 
-        /* TREŚĆ WŁAŚCIWA */
         #post-body {
             line-height: 1.9;
             font-size: 1.15rem;
             color: var(--text-main);
-            text-align: left;
         }
 
         #post-body p { margin-bottom: 28px; }
@@ -101,12 +92,11 @@
             margin-top: 55px; margin-bottom: 25px;
             font-size: 2.1rem;
             font-weight: 700;
-            text-align: left;
         }
 
         #post-body ul {
             margin-bottom: 30px;
-            padding-left: 0; /* Usunięcie domyślnego wcięcia dla wyrównania do lewej */
+            padding-left: 0;
             list-style-type: none;
         }
 
@@ -114,7 +104,6 @@
             position: relative;
             margin-bottom: 12px;
             padding-left: 30px;
-            text-align: left;
         }
 
         #post-body li::before {
@@ -122,25 +111,31 @@
             position: absolute;
             left: 0;
             color: var(--accent);
+            font-weight: bold;
         }
 
         #post-loader { text-align: center; padding: 100px 0; color: var(--accent); font-size: 2.5rem; }
 
         @media (max-width: 768px) {
             #post-title { font-size: 2.4rem; }
-            .news-container { padding: 0 15px 60px; }
+            .news-container { margin: 20px auto; padding: 0 15px 60px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="nav-logo"><i class="fab fa-github"></i><span>TechNova</span></a>
+        <a href="index.html" class="nav-logo">
+            <i class="fab fa-github"></i>
+            <span>TechNova GitHub</span>
+        </a>
         <div><a href="blog.html">Powrót do bloga</a></div>
     </nav>
 
     <main>
-        <div id="post-loader"><i class="fas fa-spinner fa-spin"></i></div>
+        <div id="post-loader">
+            <i class="fas fa-spinner fa-spin"></i>
+        </div>
 
         <div id="post-display" class="news-container">
             <div class="breadcrumb">
@@ -172,7 +167,10 @@
                 .then(response => response.json())
                 .then(posts => {
                     const post = posts.find(p => p.slug === selectedSlug);
+
                     if (post) {
+                        document.title = `${post.title} | TechNova`;
+                        
                         const d = new Date(post.date);
                         const formattedDate = `${d.getDate().toString().padStart(2, '0')}.${(d.getMonth() + 1).toString().padStart(2, '0')}.${d.getFullYear()}r., ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
                         
@@ -180,13 +178,23 @@
                         document.getElementById('post-title').innerText = post.title;
                         document.getElementById('post-date').innerText = formattedDate;
                         document.getElementById('post-lead').innerText = post.excerpt;
-                        document.getElementById('post-body').innerHTML = post.content;
+
+                        // KLUCZOWA POPRAWKA: Łączymy tablicę w jeden tekst HTML
+                        if (Array.isArray(post.content)) {
+                            document.getElementById('post-body').innerHTML = post.content.join('');
+                        } else {
+                            // Obsługa starego formatu (jeśli post był pojedynczym tekstem)
+                            document.getElementById('post-body').innerHTML = post.content;
+                        }
 
                         document.getElementById('post-loader').style.display = 'none';
                         const display = document.getElementById('post-display');
                         display.style.display = 'block';
                         setTimeout(() => display.classList.add('animate-in'), 50); 
                     }
+                })
+                .catch(err => {
+                    document.getElementById('post-loader').innerHTML = "Błąd ładowania treści.";
                 });
         });
     </script>
