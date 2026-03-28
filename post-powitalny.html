@@ -3,76 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="69808941280.png">
-    <title>Tytuł Artykułu | TechNova Blog</title>
+    <title>Tytuł Artykułu | TechNova</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        .article-wrapper {
-            max-width: 800px;
-            margin: 60px auto;
+        /* ŁATWIEJSZY UKŁAD - CZYTELNY */
+        .article-container {
+            max-width: 700px; /* Węższa kolumna dla wygody czytania */
+            margin: 80px auto;
             padding: 0 20px;
-            text-align: left;
         }
+
         .article-header {
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
-        .article-header h1 { font-size: 2.8rem; color: #fff; line-height: 1.2; margin-top: 10px; }
-        .article-body { line-height: 1.8; color: var(--text-main); font-size: 1.1rem; }
-        .article-body h2 { color: var(--accent); margin-top: 45px; margin-bottom: 15px; }
-        .article-body p { margin-bottom: 25px; }
-        .btn-back { display: inline-flex; align-items: center; gap: 10px; color: var(--accent); text-decoration: none; margin-bottom: 20px; font-weight: bold; font-size: 0.9rem; }
-        blockquote { border-left: 3px solid var(--accent); padding: 10px 30px; font-style: italic; color: var(--text-muted); background: rgba(23, 243, 211, 0.03); margin: 40px 0; border-radius: 0 10px 10px 0; }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .article-body {
+            font-size: 1.15rem; /* Większa czcionka = łatwiejsze czytanie */
+            line-height: 1.8;
+            color: var(--text-main);
+        }
+
+        .article-body p {
+            margin-bottom: 25px;
+        }
+
+        /* Sekcja "W skrócie" na początku */
+        .summary-box {
+            background: rgba(23, 243, 211, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        /* Uproszczone nagłówki */
+        h2 { font-size: 1.8rem; margin: 40px 0 20px; color: #fff; }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="nav-logo"><i class="fab fa-github"></i><span>TechNova GitHub</span></a>
-        <div><a href="blog.html">Powrót do Bloga</a></div>
-    </nav>
+    <article class="article-container">
+        <a href="blog.html" style="color: var(--accent); text-decoration: none; font-size: 0.9rem;">
+            <i class="fas fa-arrow-left"></i> Wróć do bloga
+        </a>
 
-    <main class="article-wrapper">
-        <a href="blog.html" class="btn-back"><i class="fas fa-chevron-left"></i> Powrót do listy artykułów</a>
-        
         <header class="article-header">
-            <span style="color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Kategoria | 28.03.2026</span>
-            <h1>Tutaj wpisz tytuł artykułu</h1>
+            <span style="font-size: 0.8rem; color: var(--text-muted);">28 marca 2026</span>
+            <h1>Tutaj wpisz ciekawy tytuł posta</h1>
         </header>
 
+        <div class="summary-box">
+            W jednym zdaniu napisz, czego czytelnik nauczy się z tego artykułu. To pomaga zatrzymać uwagę.
+        </div>
+
         <section class="article-body">
-            <p>Tutaj zacznij pisać swój artykuł. Jest to idealne miejsce na wprowadzenie czytelnika w temat.</p>
+            <p>Tutaj zaczyna się główna treść. Pamiętaj o krótkich akapitach – unikaj ścian tekstu.</p>
             
-            <h2>Pierwszy podtytuł</h2>
-            <p>Opisz szczegóły techniczne lub ciekawostki związane z Twoim projektem. Dzięki temu, że strona jest na GitHubie, kod jest zawsze pod ręką dla Twoich czytelników.</p>
-
-            <blockquote>
-                "To jest miejsce na ważny cytat lub podsumowanie kluczowej myśli artykułu."
-            </blockquote>
-
-            <h2>Kolejna sekcja</h2>
-            <p>Możesz tutaj dodać listę punktową, aby ułatwić czytanie:</p>
-            <ul style="margin-bottom: 25px; padding-left: 20px;">
-                <li>Zaleta pierwsza rozwiązania</li>
-                <li>Szybkość i wydajność dzięki Cloudflare</li>
-                <li>Pełna prywatność danych (Client-Side)</li>
+            <h2>Dlaczego to jest ważne?</h2>
+            <p>Krótkie zdania są bardziej przystępne. Używaj list, jeśli chcesz przekazać dane:</p>
+            
+            <ul>
+                <li style="margin-bottom: 10px;">Punkt pierwszy – krótko i na temat.</li>
+                <li style="margin-bottom: 10px;">Punkt drugi – konkretna korzyść.</li>
             </ul>
 
-            <p>Na zakończenie warto dodać krótkie podsumowanie lub zachętę do sprawdzenia kodu na GitHubie.</p>
+            <p>Zakończ artykuł wyraźnym wnioskiem lub pytaniem do czytelnika, aby wywołać interakcję.</p>
         </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-legal">
-                <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
-                <a href="regulamin.html">Regulamin</a>
-            </div>
-            <div class="footer-copy">
-                <p>&copy; 2026 TechNova GitHub. Created by Kacper Gnyp.</p>
-            </div>
-        </div>
-    </footer>
+    </article>
 </body>
 </html>
