@@ -7,61 +7,41 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .article-container { 
-            max-width: 900px; 
-            margin: 60px auto; 
-            padding: 0 20px 100px; 
-            text-align: left; 
-        }
-
-        /* Sekcja Nagłówka */
+        .article-container { max-width: 900px; margin: 60px auto; padding: 0 20px 100px; text-align: left; }
         .post-header { margin-bottom: 40px; }
         .post-category { color: var(--accent, #17f3d3); text-transform: uppercase; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; }
         #post-title { font-size: 3.2rem; color: #fff; margin: 15px 0; line-height: 1.1; font-weight: 800; }
 
-        /* Przywrócony Autor i Nowy Format Daty */
+        /* Meta sekcja autora i daty */
         .post-meta-wrapper { 
-            display: flex; 
-            align-items: center; 
-            gap: 15px; 
-            margin: 25px 0;
-            padding-bottom: 25px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; gap: 15px; margin: 25px 0;
+            padding-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+        
+        /* dynamiczny AWATAR Z INICJAŁAMI */
         .author-avatar { 
-            width: 45px; height: 45px; 
-            background: var(--accent, #17f3d3); 
-            color: #000; 
+            width: 50px; height: 50px; 
+            background: rgba(23, 243, 211, 0.1); /* Delikatne tło akcentowe */
+            color: var(--accent, #17f3d3); 
+            border: 2px solid var(--accent, #17f3d3);
             border-radius: 50%; 
             display: flex; align-items: center; justify-content: center; 
-            font-weight: 900; font-size: 1.2rem;
+            font-weight: 900; font-size: 1.3rem;
+            text-transform: uppercase;
         }
+
         .meta-info { display: flex; flex-direction: column; gap: 2px; }
-        .author-name { color: #fff; font-weight: 700; font-size: 1rem; }
+        #post-author-name { color: #fff; font-weight: 700; font-size: 1.1rem; }
         #post-date { color: #888; font-size: 0.9rem; }
 
-        /* Treść Artykułu */
-        #post-lead { 
-            font-size: 1.4rem; 
-            color: #fff; 
-            line-height: 1.6; 
-            font-weight: 600; 
-            margin-bottom: 40px; 
-        }
-
+        #post-lead { font-size: 1.4rem; color: #fff; line-height: 1.6; font-weight: 600; margin-bottom: 40px; }
         #post-body { font-size: 1.15rem; line-height: 1.8; color: #ccc; }
         #post-body h2 { color: #fff; font-size: 1.9rem; margin: 45px 0 20px 0; }
         #post-body p { margin-bottom: 25px; }
-        
-        /* Listy punktowane */
-        #post-body ul { margin: 25px 0; padding-left: 0; list-style: none; }
-        #post-body li { position: relative; padding-left: 25px; margin-bottom: 12px; }
-        #post-body li::before { content: "•"; color: var(--accent, #17f3d3); position: absolute; left: 0; font-weight: bold; }
+        #post-body ul { margin: 25px 0; padding-left: 20px; list-style-type: disc; }
+        #post-body li { margin-bottom: 12px; }
 
-        @media (max-width: 768px) {
-            #post-title { font-size: 2.2rem; }
-            .article-container { margin: 30px auto; }
-        }
+        @media (max-width: 768px) { #post-title { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
@@ -76,9 +56,9 @@
             <h1 id="post-title"></h1>
             
             <div class="post-meta-wrapper">
-                <div class="author-avatar">TN</div>
+                <div class="author-avatar" id="post-author-initials"></div>
                 <div class="meta-info">
-                    <span class="author-name">Redakcja TechNova</span>
+                    <span id="post-author-name"></span>
                     <span id="post-date"></span>
                 </div>
             </div>
@@ -96,9 +76,22 @@
             fetch('posts.json').then(res => res.json()).then(posts => {
                 const post = posts.find(p => p.slug === slug);
                 if(post) {
-                    const d = new Date(post.date);
                     
-                    // FORMATOWANIE DATY: 28.03.2026 22:00
+                    // 1. LOGIKA INICJAŁÓW AUTORA
+                    const authorName = post.author || "Redakcja";
+                    const initials = authorName
+                        .split(' ')              // Rozdziel po spacji
+                        .map(word => word[0])    // Weź pierwszą literę każdego słowa
+                        .join('')                // Połącz
+                        .toUpperCase()           // Wielkie litery
+                        .substring(0, 2);        // Max 2 znaki (np. RE, KG)
+
+                    // Uzupełnij dane autora
+                    document.getElementById('post-author-name').innerText = authorName;
+                    document.getElementById('post-author-initials').innerText = initials;
+
+                    // 2. FORMAT DATY (28.03.2026 21:10)
+                    const d = new Date(post.date);
                     const day = d.getDate().toString().padStart(2, '0');
                     const month = (d.getMonth() + 1).toString().padStart(2, '0');
                     const year = d.getFullYear();
@@ -107,6 +100,7 @@
                     
                     const formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`;
                     
+                    // 3. UZUPEŁNIJ RESZTĘ TREŚCI
                     document.getElementById('post-category').innerText = post.category;
                     document.getElementById('post-title').innerText = post.title;
                     document.getElementById('post-date').innerText = formattedDate;
