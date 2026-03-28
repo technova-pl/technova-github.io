@@ -3,267 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artykuł | TechNova</title>
+    <link rel="icon" type="image/png" href="69808941280.png">
+    <title>Wiadomości | TechNova</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* --- DEFINICJE ANIMACJI (Keyframes) --- */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- POPRAWNY UKŁAD TYPOGRAFICZNY (News Style) --- */
+        /* KONTENER - Kolumna na środku, ale treść wewnątrz DO LEWEJ */
         .news-container {
-            max-width: 850px; /* Optymalna szerokość dla czytelności */
-            margin: 40px auto;
+            max-width: 850px; 
+            margin: 40px auto; /* Centruje kolumnę na ekranie */
             padding: 0 25px 100px;
-            text-align: left;
-            /* Ukrywamy treść na starcie, animacja ją pokaże */
+            text-align: left; /* Wyrównanie treści do lewej */
             opacity: 0; 
         }
 
-        /* Klasa aktywująca animację (dodawana przez JS) */
         .news-container.animate-in {
             animation: fadeInUp 0.8s ease-out forwards;
         }
 
-        /* Okruszki (Breadcrumbs) */
         .breadcrumb {
             font-size: 0.8rem;
             color: var(--text-muted);
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-align: left;
         }
-        .breadcrumb a { color: var(--accent); text-decoration: none; transition: 0.2s; }
-        .breadcrumb a:hover { color: #fff; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
         .breadcrumb span { margin: 0 8px; color: rgba(255,255,255,0.15); }
 
         .article-header {
             margin-bottom: 40px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             padding-bottom: 30px;
+            text-align: left;
         }
 
-        /* GIGANTYCZNY NÓWSOWY TYTUŁ */
         #post-title {
-            font-size: 3.5rem; /* Bardzo duży, pogrubiony */
+            font-size: 3.5rem; 
             color: #fff;
             margin: 10px 0 25px;
             line-height: 1.1;
             font-weight: 800;
             letter-spacing: -1px;
+            text-align: left;
         }
 
-        /* Belka autora i daty */
         .post-meta-bar {
             display: flex;
             align-items: center;
             gap: 15px;
             color: var(--text-muted);
             font-size: 0.95rem;
+            justify-content: flex-start; /* Do lewej */
         }
+
         .author-avatar {
             width: 45px; height: 45px;
             border-radius: 50%;
             background: rgba(23, 243, 211, 0.1);
             border: 1px solid var(--accent);
             display: flex; align-items: center; justify-content: center;
-            color: var(--accent); font-weight: bold; font-size: 1.2rem;
+            color: var(--accent); font-weight: bold;
         }
 
-        /* POGRUBIONY WSTĘP (LEAD) - KLUCZ DO CZYTELNOŚCI */
+        /* POGRUBIONY LEAD - WYRÓWNANY DO LEWEJ */
         #post-lead {
-            font-size: 1.4rem; /* Większy niż reszta tekstu */
-            font-weight: 700; /* Mocno pogrubiony */
+            font-size: 1.4rem;
+            font-weight: 700;
             line-height: 1.6;
-            color: #fff; /* Jaśniejszy kolor */
+            color: #fff;
             margin-bottom: 45px;
             padding-left: 20px;
-            border-left: 4px solid var(--accent); /* Akcent kolorystyczny z boku */
+            border-left: 4px solid var(--accent);
+            text-align: left;
         }
 
-        /* --- STYLIZACJA TREŚCI WŁAŚCIWEJ (#post-body) --- */
+        /* TREŚĆ WŁAŚCIWA */
         #post-body {
-            line-height: 1.9; /* Duża interlinia = mniejsze zmęczenie wzroku */
+            line-height: 1.9;
             font-size: 1.15rem;
             color: var(--text-main);
+            text-align: left;
         }
 
-        /* Poprawne odstępy między akapitami */
         #post-body p { margin-bottom: 28px; }
 
-        /* Stylizacja nagłówków wewnątrz treści */
         #post-body h2 {
             color: #fff;
             margin-top: 55px; margin-bottom: 25px;
             font-size: 2.1rem;
             font-weight: 700;
-            line-height: 1.2;
+            text-align: left;
         }
 
-        /* Stylizacja list punktowanych */
         #post-body ul {
             margin-bottom: 30px;
-            padding-left: 25px;
+            padding-left: 0; /* Usunięcie domyślnego wcięcia dla wyrównania do lewej */
             list-style-type: none;
         }
+
         #post-body li {
             position: relative;
             margin-bottom: 12px;
             padding-left: 30px;
+            text-align: left;
         }
+
         #post-body li::before {
-            content: '✓'; /* Własny symbol punktora */
+            content: '✓';
             position: absolute;
             left: 0;
             color: var(--accent);
-            font-weight: bold;
         }
 
-        /* Stylizacja cytatów (Blockquote) */
-        #post-body blockquote {
-            border-left: 3px solid rgba(255,255,255,0.2);
-            padding: 10px 30px;
-            font-style: italic;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.02);
-            margin: 40px 0;
-            border-radius: 0 8px 8px 0;
-        }
-
-        /* Loader */
         #post-loader { text-align: center; padding: 100px 0; color: var(--accent); font-size: 2.5rem; }
 
-        /* Responsywność dla urządzeń mobilnych */
         @media (max-width: 768px) {
             #post-title { font-size: 2.4rem; }
-            #post-lead { font-size: 1.2rem; padding-left: 15px; }
-            #post-body { font-size: 1.1rem; }
-            .news-container { margin: 20px auto; padding: 0 15px 60px; }
-            #post-body h2 { font-size: 1.8rem; margin-top: 40px; }
+            .news-container { padding: 0 15px 60px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="nav-logo">
-            <i class="fab fa-github"></i>
-            <span>TechNova GitHub</span>
-        </a>
-        <div>
-            <a href="index.html">Start</a>
-            <a href="o-nas.html">O nas</a>
-            <a href="projekty.html">Projekty</a>
-            <a href="blog.html">Blog</a>
-            <a href="zespol.html">Zespół</a>
-            <a href="kontakt.html">Kontakt</a>
-        </div>
+        <a href="index.html" class="nav-logo"><i class="fab fa-github"></i><span>TechNova</span></a>
+        <div><a href="blog.html">Powrót do bloga</a></div>
     </nav>
 
-    <main id="main-content">
-        <div id="post-loader">
-            <i class="fas fa-spinner fa-spin"></i>
-        </div>
+    <main>
+        <div id="post-loader"><i class="fas fa-spinner fa-spin"></i></div>
 
         <div id="post-display" class="news-container">
-            
             <div class="breadcrumb">
-                <a href="index.html">TechNova</a> <span>/</span> <a href="blog.html">Blog</a> <span>/</span> <span id="post-category-bc">Kategoria</span>
+                <a href="index.html">TechNova</a> <span>/</span> <a href="blog.html">Blog</a> <span>/</span> <span id="post-category-bc"></span>
             </div>
 
             <header class="article-header">
-                <h1 id="post-title">Ładowanie tytułu...</h1>
-                
+                <h1 id="post-title"></h1>
                 <div class="post-meta-bar">
-                    <div class="author-avatar">TN</div>
+                    <div class="author-avatar">KG</div>
                     <div>
-                        <div style="color: #fff; font-weight: bold;">Redakcja TechNova</div>
-                        <div id="post-date">Data publikacji</div>
+                        <div style="color: #fff; font-weight: bold;">Kacper Gnyp</div>
+                        <div id="post-date"></div>
                     </div>
                 </div>
             </header>
 
-            <div id="post-lead">
-                </div>
-
-            <section id="post-body">
-                </section>
+            <div id="post-lead"></div>
+            <section id="post-body"></section>
         </div>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-copy">
-                <p>&copy; 2026 TechNova GitHub. Created by <strong>Kacper Gnyp</strong>.</p>
-            </div>
-        </div>
-    </footer>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Pobieramy unikalny identyfikator (slug) posta
             const selectedSlug = localStorage.getItem('selectedPostSlug');
-            
-            // Awaryjny powrót, jeśli ktoś wejdzie bezpośrednio w post.html
             if (!selectedSlug) { window.location.href = 'blog.html'; return; }
 
-            // 2. Pobieramy bazę danych JSON
             fetch('posts.json')
-                .then(response => {
-                    if (!response.ok) throw new Error("Błąd pobierania bazy postów.");
-                    return response.json();
-                })
+                .then(response => response.json())
                 .then(posts => {
-                    // 3. Szukamy posta pasującego do sluga
                     const post = posts.find(p => p.slug === selectedSlug);
-
                     if (post) {
-                        // 4. Aktualizujemy <title> strony dla SEO
-                        document.title = `${post.title} | TechNova Wiadomości`;
-                        
-                        // 5. Formatujemy datę (RRRR-MM-DD HH:MM -> DD.MM.RRRRr., HH:MM)
                         const d = new Date(post.date);
                         const formattedDate = `${d.getDate().toString().padStart(2, '0')}.${(d.getMonth() + 1).toString().padStart(2, '0')}.${d.getFullYear()}r., ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
                         
-                        // 6. Wstrzykujemy dane do szablonu HTML
                         document.getElementById('post-category-bc').innerText = post.category;
                         document.getElementById('post-title').innerText = post.title;
                         document.getElementById('post-date').innerText = formattedDate;
-                        
-                        // Pole 'excerpt' z JSON trafia do 'post-lead' (pogrubiony wstęp)
                         document.getElementById('post-lead').innerText = post.excerpt;
-                        
-                        // Pole 'content' z JSON trafia do 'post-body' (pełna treść)
                         document.getElementById('post-body').innerHTML = post.content;
 
-                        // 7. PŁYNNE PRZEŁĄCZENIE (Loader -> Treść z animacją)
                         document.getElementById('post-loader').style.display = 'none';
                         const display = document.getElementById('post-display');
                         display.style.display = 'block';
-                        // Dodajemy klasę, która aktywuje animację CSS fadeInUp
                         setTimeout(() => display.classList.add('animate-in'), 50); 
-                        
-                    } else {
-                        document.getElementById('post-loader').innerHTML = "<p style='color:red;'>Przepraszamy, nie znaleziono takiego artykułu.</p>";
                     }
-                })
-                .catch(err => {
-                    console.error("Błąd:", err);
-                    document.getElementById('post-loader').innerHTML = "<p style='color:red;'>Błąd połączenia z bazą danych.</p>";
                 });
         });
     </script>
-
 </body>
 </html>
