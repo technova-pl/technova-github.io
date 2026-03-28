@@ -6,19 +6,16 @@
     "category": "TECHNOLOGIA",
     "excerpt": "Zastanawiasz się, czym różni się LAN od WAN, albo czym w ogóle jest VLAN? W tym artykule wyjaśniamy główne typy sieci, z których korzystamy na co dzień.",
     "content": [
-      "<h2>Sieci prywatne i lokalne</h2>",
-      "<p>Najczęściej spotykane typy sieci definiuje się ze względu na ich zasięg geograficzny oraz sposób zarządzania.</p>",
-      "<ul>",
-      "<li><b>PAN (Personal Area Network):</b> Sieć osobista (np. Bluetooth).</li>",
-      "<li><b>LAN (Local Area Network):</b> Sieć lokalna w domu lub biurze.</li>",
-      "<li><b>WLAN (Wireless LAN):</b> Bezprzewodowa wersja sieci LAN.</li>",
-      "</ul>",
-      "<h2>Sieci miejskie i rozległe</h2>",
-      "<ul>",
-      "<li><b>MAN (Metropolitan Area Network):</b> Sieć łącząca zasoby w obrębie miasta.</li>",
-      "<li><b>WAN (Wide Area Network):</b> Sieć rozległa (Internet).</li>",
-      "<li><b>WWAN (Wireless WAN):</b> Sieć bezprzewodowa dalekiego zasięgu (5G/LTE).</li>",
-      "</ul>"
+      "<h2>Wprowadzenie do klasyfikacji sieci</h2>",
+      "<p>Sieci komputerowe klasyfikujemy głównie ze względu na ich zasięg geograficzny. Każdy typ ma swoje specyficzne zastosowania i technologie przesyłu danych.</p>",
+      "<h3>Sieci lokalne i osobiste</h3>",
+      "<p>Najmniejszą jednostką jest <b>PAN (Personal Area Network)</b>. Obejmuje ona urządzenia w bezpośrednim otoczeniu człowieka, jak telefon połączony ze słuchawkami przez Bluetooth.</p>",
+      "<p>Kolejnym szczeblem jest <b>LAN (Local Area Network)</b>. To sieć w Twoim domu lub biurze. Jej bezprzewodowa odmiana to popularne <b>WLAN (Wi-Fi)</b>.</p>",
+      "<h3>Sieci o dużym zasięgu</h3>",
+      "<p><b>MAN (Metropolitan Area Network)</b> łączy sieci w obrębie jednego miasta, natomiast <b>WAN (Wide Area Network)</b> to sieć o zasięgu globalnym – jej najpopularniejszym przykładem jest Internet.</p>",
+      "<p>Nowoczesne technologie mobilne, takie jak 5G, pozwalają na tworzenie <b>WWAN (Wireless WAN)</b>, zapewniając szybki dostęp do danych niemal wszędzie.</p>",
+      "<h3>Rozwiązania wirtualne</h3>",
+      "<p>W dużych organizacjach stosuje się <b>VLAN (Virtual LAN)</b>, który pozwala na logiczne dzielenie jednej fizycznej sieci na mniejsze grupy, co drastycznie podnosi bezpieczeństwo danych.</p>"
     ]
   }
 ]
