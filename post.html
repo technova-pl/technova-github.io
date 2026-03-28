@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="69808941280.png">
+    <title>Artykuł | TechNova GitHub</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .article-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 25px;
+            text-align: left;
+        }
+
+        .article-header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(23, 243, 211, 0.1);
+            padding-bottom: 30px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 30px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        .post-meta-top {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        #post-title {
+            font-size: 3rem;
+            color: #fff;
+            margin: 15px 0;
+            line-height: 1.2;
+        }
+
+        .post-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Stylizacja treści posta */
+        #post-body {
+            line-height: 1.8;
+            font-size: 1.15rem;
+            color: var(--text-main);
+        }
+
+        #post-body p {
+            margin-bottom: 25px;
+        }
+
+        #post-body h2 {
+            color: #fff;
+            margin-top: 45px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        #post-body blockquote {
+            border-left: 4px solid var(--accent);
+            padding: 10px 25px;
+            background: rgba(23, 243, 211, 0.03);
+            font-style: italic;
+            margin: 40px 0;
+            color: var(--text-muted);
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* Loader */
+        #post-loader {
+            text-align: center;
+            padding: 100px 0;
+            color: var(--accent);
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <i class="fab fa-github"></i>
+            <span>TechNova GitHub</span>
+        </a>
+        <div><a href="blog.html">Blog</a></div>
+    </nav>
+
+    <main class="article-container">
+        <a href="blog.html" class="back-link">
+            <i class="fas fa-arrow-left"></i> Wróć do listy wpisów
+        </a>
+
+        <div id="post-loader">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </div>
+
+        <div id="post-display" style="display: none;">
+            <header class="article-header">
+                <div class="post-meta-top" id="post-category">Kategoria</div>
+                <h1 id="post-title">Tytuł artykułu</h1>
+                <div class="post-date" id="post-date">28 Marca 2026</div>
+            </header>
+
+            <section id="post-body">
+                </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-copy">
+                <p>&copy; 2026 TechNova GitHub. Created by Kacper Gnyp.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Pobieramy "slug" posta z pamięci przeglądarki
+            const selectedSlug = localStorage.getItem('selectedPostSlug');
+            
+            if (!selectedSlug) {
+                window.location.href = 'blog.html';
+                return;
+            }
+
+            fetch('posts.json')
+                .then(response => response.json())
+                .then(posts => {
+                    const post = posts.find(p => p.slug === selectedSlug);
+
+                    if (post) {
+                        // Wypełniamy dane na stronie
+                        document.title = `${post.title} | TechNova Blog`;
+                        document.getElementById('post-category').innerText = post.category;
+                        document.getElementById('post-title').innerText = post.title;
+                        document.getElementById('post-date').innerText = post.date;
+                        document.getElementById('post-body').innerHTML = post.content;
+
+                        // Pokazujemy treść, chowamy loader
+                        document.getElementById('post-loader').style.display = 'none';
+                        document.getElementById('post-display').style.display = 'block';
+                    } else {
+                        document.getElementById('post-loader').innerHTML = "Post nie został znaleziony.";
+                    }
+                })
+                .catch(err => {
+                    console.error("Błąd:", err);
+                    document.getElementById('post-loader').innerHTML = "Błąd połączenia z bazą postów.";
+                });
+        });
+    </script>
+
+</body>
+</html>
