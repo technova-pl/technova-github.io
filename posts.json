@@ -1,27 +1,24 @@
 [
   {
     "slug": "typy-sieci-komputerowych",
-    "title": "Typy sieci komputerowych: Kompletny przewodnik od PAN do WWAN",
+    "title": "Typy sieci komputerowych: Przewodnik od PAN do WWAN",
     "date": "2026-03-28 21:10",
     "category": "TECHNOLOGIA",
-    "excerpt": "Zastanawiasz się, czym różni się LAN od WAN, albo czym w ogóle jest VLAN? W tym artykule wyjaśniamy główne typy sieci, z których korzystamy na co dzień w erze 5G i IoT.",
+    "excerpt": "Zastanawiasz się, czym różni się LAN od WAN, albo czym w ogóle jest VLAN? W tym artykule wyjaśniamy główne typy sieci, z których korzystamy na co dzień.",
     "content": [
       "<h2>Sieci prywatne i lokalne</h2>",
       "<p>Najczęściej spotykane typy sieci definiuje się ze względu na ich zasięg geograficzny oraz sposób zarządzania.</p>",
       "<ul>",
-      "<li><b>PAN (Personal Area Network):</b> Sieć osobista, obejmująca zazwyczaj kilka metrów wokół użytkownika (np. Bluetooth między smartfonem a słuchawkami).</li>",
-      "<li><b>LAN (Local Area Network):</b> Sieć lokalna, działająca w obrębie budynku lub domu (np. domowe Wi-Fi lub sieć biurowa po kablu).</li>",
-      "<li><b>WLAN (Wireless LAN):</b> Bezprzewodowa wersja sieci LAN, gdzie dane przesyłane są za pomocą fal radiowych.</li>",
+      "<li><b>PAN (Personal Area Network):</b> Sieć osobista (np. Bluetooth).</li>",
+      "<li><b>LAN (Local Area Network):</b> Sieć lokalna w domu lub biurze.</li>",
+      "<li><b>WLAN (Wireless LAN):</b> Bezprzewodowa wersja sieci LAN.</li>",
       "</ul>",
       "<h2>Sieci miejskie i rozległe</h2>",
-      "<p>W miarę wzrostu dystansu, technologie przesyłu danych stają się coraz bardziej zaawansowane.</p>",
       "<ul>",
-      "<li><b>MAN (Metropolitan Area Network):</b> Sieć miejska, łącząca wiele sieci LAN w obrębie jednego miasta.</li>",
-      "<li><b>WAN (Wide Area Network):</b> Sieć rozległa, obejmująca duże obszary (kraje, kontynenty). Internet jest największą siecią typu WAN.</li>",
-      "<li><b>WWAN (Wireless WAN):</b> Rozległa sieć bezprzewodowa, wykorzystująca technologie komórkowe (LTE, 5G).</li>",
-      "</ul>",
-      "<h2>Sieci wirtualne i bezpieczeństwo</h2>",
-      "<p>Warto również wspomnieć o <b>VLAN (Virtual LAN)</b>. Jest to logiczne wydzielenie części sieci fizycznej na kilka mniejszych, wirtualnych podsieci. Pozwala to na zwiększenie bezpieczeństwa i lepszą organizację ruchu w dużych firmach.</p>"
+      "<li><b>MAN (Metropolitan Area Network):</b> Sieć łącząca zasoby w obrębie miasta.</li>",
+      "<li><b>WAN (Wide Area Network):</b> Sieć rozległa (Internet).</li>",
+      "<li><b>WWAN (Wireless WAN):</b> Sieć bezprzewodowa dalekiego zasięgu (5G/LTE).</li>",
+      "</ul>"
     ]
   }
 ]
