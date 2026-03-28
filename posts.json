@@ -1,18 +1,18 @@
 [
   {
-    "id": 1,
+    "slug": "client-side-przyszlosc",
     "title": "Dlaczego Client-Side to przyszłość?",
-    "date": "28.03.2026",
-    "category": "Prywatność",
-    "excerpt": "Dowiedz się, dlaczego przetwarzanie danych w przeglądarce to najbezpieczniejszy model.",
-    "content": "Tutaj wpisz całą treść posta. Możesz używać tagów <br> dla nowej linii."
+    "date": "28 marca 2026",
+    "category": "Technologia",
+    "excerpt": "Dowiedz się, dlaczego przetwarzanie danych bezpośrednio w przeglądarce użytkownika to najbezpieczniejszy model.",
+    "content": "<h2>Zero-Knowledge jako standard</h2><p>W tradycyjnym modelu aplikacje przesyłają Twoje dane na serwer. W modelu <b>Client-Side</b>, kod wykonuje się lokalnie w Twojej przeglądarce. Serwer nigdy nie widzi Twoich haseł czy danych osobowych.</p><h2>Dlaczego to jest szybsze?</h2><p>Brak ciągłej komunikacji z serwerem eliminuje opóźnienia sieciowe. Wszystko dzieje się natychmiast, co poprawia komfort pracy.</p><blockquote>Prywatność to nie tylko brak śledzenia, to także brak możliwości podejrzenia Twoich danych przez administratora.</blockquote>"
   },
   {
-    "id": 2,
-    "title": "Bezpieczeństwo w chmurze Cloudflare",
-    "date": "25.03.2026",
-    "category": "Security",
-    "excerpt": "Jak chronimy nasze narzędzia przed atakami DDoS.",
-    "content": "Treść drugiego posta..."
+    "slug": "cloudflare-ochrona",
+    "title": "Cloudflare i ochrona przed atakami",
+    "date": "25 marca 2026",
+    "category": "Bezpieczeństwo",
+    "excerpt": "Analiza technologii Edge Computing i jej wpływu na bezpieczeństwo naszych narzędzi.",
+    "content": "<h2>Jak działamy?</h2><p>Wykorzystujemy infrastrukturę Cloudflare, aby rozproszyć ruch. Dzięki temu nasze generatory są odporne na ataki typu DDoS.</p><h2>Globalna sieć</h2><p>Dzięki Edge Computing, nasza strona jest serwowana z najbliższego dla użytkownika centrum danych, co zapewnia prędkość ładowania poniżej 100ms.</p><ul><li>Wielowarstwowa ochrona WAF</li><li>Automatyczna optymalizacja obrazów</li><li>Certyfikaty SSL w standardzie</li></ul>"
   }
 ]
