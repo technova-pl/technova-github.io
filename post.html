@@ -3,71 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="69808941280.png">
     <title>Artykuł | TechNova</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
-        body { background-color: #0d1117; color: #c9d1d9; }
-        
-        .article-wrapper { max-width: 1100px; margin: 0 auto; padding: 40px 20px; opacity: 0; }
-        .article-wrapper.show { animation: fadeIn 0.6s ease-in forwards; }
+        body { background-color: var(--bg-color, #0f0f1a); color: var(--text-main, #ffffff); }
 
-        /* Nagłówek Newsowy - Szeroki */
-        .article-header { border-bottom: 1px solid #30363d; padding-bottom: 30px; margin-bottom: 40px; }
-        .post-label { color: #58a6ff; font-weight: 800; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 15px; display: block; }
-        #post-title { font-size: 3.8rem; color: #f0f6fc; line-height: 1.1; font-weight: 800; margin: 10px 0 25px; letter-spacing: -2px; }
-        
-        .meta-strip { display: flex; align-items: center; gap: 20px; color: #8b949e; font-size: 0.95rem; }
-        .author-box { display: flex; align-items: center; gap: 10px; color: #f0f6fc; font-weight: 600; }
-        .author-box img { width: 35px; height: 35px; border-radius: 50%; border: 2px solid #58a6ff; }
+        .post-container { max-width: 1000px; margin: 60px auto; padding: 0 25px 100px; opacity: 0; }
+        .post-container.show { animation: fadeIn 0.8s ease forwards; }
 
-        /* Treść od lewej do prawej */
-        .main-layout { display: grid; grid-template-columns: 1fr; gap: 40px; }
+        /* Stylizacja nagłówka posta */
+        .post-header { border-bottom: 2px solid rgba(23, 243, 211, 0.1); padding-bottom: 40px; margin-bottom: 50px; text-align: left; }
+        .post-label { color: var(--accent, #17f3d3); font-weight: bold; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
+        #post-title { font-size: 4rem; color: #fff; line-height: 1.1; font-weight: 800; margin: 20px 0; letter-spacing: -2px; }
         
-        #post-lead { font-size: 1.5rem; line-height: 1.5; color: #f0f6fc; font-weight: 700; margin-bottom: 35px; border-left: 5px solid #58a6ff; padding-left: 25px; text-align: justify; }
-        
-        #post-body { font-size: 1.2rem; line-height: 1.8; text-align: left; }
-        #post-body p { margin-bottom: 25px; }
-        #post-body h2 { font-size: 2.2rem; color: #f0f6fc; margin: 50px 0 20px; border-top: 1px solid #30363d; padding-top: 30px; }
-        
-        /* Listy punktowane newsowe */
-        #post-body ul { list-style: none; padding: 0; margin: 30px 0; }
-        #post-body li { padding: 15px 20px; background: #161b22; border: 1px solid #30363d; border-radius: 6px; margin-bottom: 10px; display: flex; align-items: center; }
-        #post-body li::before { content: "●"; color: #58a6ff; font-weight: bold; margin-right: 15px; }
+        .post-meta { display: flex; align-items: center; gap: 20px; color: var(--text-muted, #a0a0b8); font-size: 1rem; }
+        .author-info { color: #fff; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+        .author-circle { width: 35px; height: 35px; border-radius: 50%; background: var(--accent, #17f3d3); color: #000; display: flex; align-items: center; justify-content: center; font-weight: 800; }
 
-        #post-loader { text-align: center; padding: 100px; color: #58a6ff; font-size: 3rem; }
+        /* Treść Artykułu */
+        #post-lead { font-size: 1.6rem; font-weight: 700; line-height: 1.5; color: #fff; margin-bottom: 40px; border-left: 5px solid var(--accent, #17f3d3); padding-left: 30px; }
+        
+        #post-body { font-size: 1.25rem; line-height: 1.9; color: var(--text-main, #ffffff); text-align: left; }
+        #post-body h2 { color: #fff; margin: 60px 0 25px; font-size: 2.2rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
+        #post-body p { margin-bottom: 30px; }
+        
+        /* Listy punktowane w stylu TechNova */
+        #post-body ul { margin: 30px 0; padding: 0; }
+        #post-body li { padding: 15px 25px; background: rgba(255,255,255,0.02); border-left: 3px solid var(--accent, #17f3d3); margin-bottom: 15px; border-radius: 0 10px 10px 0; list-style: none; }
 
-        @media (max-width: 900px) {
+        #post-loader { text-align: center; padding: 100px; color: var(--accent, #17f3d3); font-size: 3rem; }
+
+        @media (max-width: 768px) {
             #post-title { font-size: 2.5rem; }
-            #post-lead { font-size: 1.2rem; }
+            .post-container { margin: 30px auto; }
         }
     </style>
 </head>
 <body>
-    <nav><a href="index.html" class="nav-logo"><span>TechNova</span></a></nav>
+    <nav>
+        <a href="index.html" class="nav-logo"><i class="fab fa-github"></i><span>TechNova</span></a>
+        <div><a href="blog.html">Powrót do Bloga</a></div>
+    </nav>
 
-    <div id="post-loader"><i class="fas fa-circle-notch fa-spin"></i></div>
+    <div id="post-loader"><i class="fas fa-spinner fa-spin"></i></div>
 
-    <main id="post-display" class="article-wrapper">
-        <header class="article-header">
-            <span class="post-label" id="post-category">Kategoria</span>
+    <main id="post-display" class="post-container">
+        <header class="post-header">
+            <span class="post-label" id="post-category"></span>
             <h1 id="post-title"></h1>
-            <div class="meta-strip">
-                <div class="author-box">
-                    <div style="background:#58a6ff; width:35px; height:35px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#0d1117">KG</div>
-                    Kacper Gnyp
-                </div>
+            <div class="post-meta">
+                <div class="author-info"><div class="author-circle">TN</div> Redakcja TechNova</div>
                 <span>•</span>
                 <span id="post-date"></span>
             </div>
         </header>
 
-        <div class="main-layout">
-            <div id="post-lead"></div>
-            <article id="post-body"></article>
-        </div>
+        <div id="post-lead"></div>
+        <article id="post-body"></article>
     </main>
 
     <script>
@@ -90,8 +86,8 @@
                     body.innerHTML = Array.isArray(post.content) ? post.content.join('') : post.content;
 
                     document.getElementById('post-loader').style.display = 'none';
-                    const wrapper = document.getElementById('post-display');
-                    wrapper.classList.add('show');
+                    const display = document.getElementById('post-display');
+                    display.classList.add('show');
                 }
             });
         });
