@@ -4,30 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="69808941280.png">
-    <title>Blog | TechNova GitHub</title>
+    <title>Blog | TechNova</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding: 40px 5%; }
-        .post-card { background: var(--card-bg); border-radius: 15px; padding: 25px; text-align: left; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
-        .post-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .post-meta { color: var(--accent); font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
+        .post-card { background: var(--card-bg, #1a1a2e); border-radius: 15px; padding: 25px; text-align: left; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
+        .post-card:hover { transform: translateY(-5px); border-color: #17f3d3; }
+        .post-meta { color: #17f3d3; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
         .post-card h3 { color: #fff; font-size: 1.5rem; margin-bottom: 15px; line-height: 1.2; }
-        .post-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+        .post-card p { color: #a0a0b8; font-size: 0.95rem; line-height: 1.5; }
     </style>
 </head>
 <body>
     <nav>
-        <a href="index.html" class="nav-logo"><i class="fab fa-github"></i><span>TechNova GitHub</span></a>
+        <a href="index.html" class="nav-logo"><span>TechNova</span></a>
         <div><a href="index.html">Start</a><a href="blog.html">Blog</a></div>
     </nav>
 
-    <header style="text-align: center; padding: 60px 0 20px;">
-        <h2>Wiadomości i Aktualności</h2>
-    </header>
-
     <div id="blog-grid" class="blog-grid">
-        <div style="color: var(--accent);">Ładowanie wpisów...</div>
+        <div style="color: #17f3d3;">Ładowanie aktualności...</div>
     </div>
 
     <script>
@@ -35,7 +31,7 @@
             fetch('posts.json')
                 .then(res => res.json())
                 .then(posts => {
-                    // SORTOWANIE: Od najnowszej daty
+                    // Sortowanie od najnowszego
                     posts.sort((a, b) => new Date(b.date) - new Date(a.date));
                     
                     const grid = document.getElementById('blog-grid');
