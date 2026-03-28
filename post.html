@@ -5,55 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artykuł | TechNova</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Styl bazowy dla treści posta */
         .article-container { 
             max-width: 900px; 
             margin: 60px auto; 
             padding: 0 20px 100px; 
-            text-align: left; /* Wyrównanie do lewej */
+            text-align: left; 
         }
 
+        /* Sekcja Nagłówka */
         .post-header { margin-bottom: 40px; }
-        .post-category { color: var(--accent, #17f3d3); text-transform: uppercase; font-weight: bold; font-size: 0.9rem; }
-        #post-title { font-size: 3rem; color: #fff; margin: 15px 0; line-height: 1.2; font-weight: 800; }
-        .post-date { color: #888; font-size: 1rem; margin-bottom: 30px; display: block; }
+        .post-category { color: var(--accent, #17f3d3); text-transform: uppercase; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; }
+        #post-title { font-size: 3.2rem; color: #fff; margin: 15px 0; line-height: 1.1; font-weight: 800; }
 
-        /* Normalny tekst i lead */
+        /* Przywrócony Autor i Nowy Format Daty */
+        .post-meta-wrapper { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            margin: 25px 0;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .author-avatar { 
+            width: 45px; height: 45px; 
+            background: var(--accent, #17f3d3); 
+            color: #000; 
+            border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            font-weight: 900; font-size: 1.2rem;
+        }
+        .meta-info { display: flex; flex-direction: column; gap: 2px; }
+        .author-name { color: #fff; font-weight: 700; font-size: 1rem; }
+        #post-date { color: #888; font-size: 0.9rem; }
+
+        /* Treść Artykułu */
         #post-lead { 
             font-size: 1.4rem; 
             color: #fff; 
             line-height: 1.6; 
             font-weight: 600; 
             margin-bottom: 40px; 
-            padding-bottom: 30px; 
-            border-bottom: 1px solid rgba(255,255,255,0.1); 
         }
 
-        /* Stylizacja nagłówków wewnątrz treści */
         #post-body { font-size: 1.15rem; line-height: 1.8; color: #ccc; }
-        #post-body h2 { color: #fff; font-size: 1.8rem; margin: 40px 0 20px 0; font-weight: 700; }
-        #post-body h3 { color: var(--accent, #17f3d3); font-size: 1.4rem; margin: 30px 0 15px 0; }
+        #post-body h2 { color: #fff; font-size: 1.9rem; margin: 45px 0 20px 0; }
         #post-body p { margin-bottom: 25px; }
-
-        /* Normalne listy */
-        #post-body ul { margin: 20px 0; padding-left: 20px; }
-        #post-body li { margin-bottom: 10px; list-style-type: disc; }
+        
+        /* Listy punktowane */
+        #post-body ul { margin: 25px 0; padding-left: 0; list-style: none; }
+        #post-body li { position: relative; padding-left: 25px; margin-bottom: 12px; }
+        #post-body li::before { content: "•"; color: var(--accent, #17f3d3); position: absolute; left: 0; font-weight: bold; }
 
         @media (max-width: 768px) {
             #post-title { font-size: 2.2rem; }
-            #post-lead { font-size: 1.2rem; }
+            .article-container { margin: 30px auto; }
         }
     </style>
 </head>
 <body>
-    <nav><a href="index.html" class="nav-logo">TechNova</a></nav>
+    <nav>
+        <a href="index.html" class="nav-logo">TechNova</a>
+        <div><a href="blog.html">Powrót do Bloga</a></div>
+    </nav>
 
     <main class="article-container">
         <header class="post-header">
             <span class="post-category" id="post-category"></span>
             <h1 id="post-title"></h1>
-            <span class="post-date" id="post-date"></span>
+            
+            <div class="post-meta-wrapper">
+                <div class="author-avatar">TN</div>
+                <div class="meta-info">
+                    <span class="author-name">Redakcja TechNova</span>
+                    <span id="post-date"></span>
+                </div>
+            </div>
         </header>
 
         <div id="post-lead"></div>
@@ -69,11 +97,19 @@
                 const post = posts.find(p => p.slug === slug);
                 if(post) {
                     const d = new Date(post.date);
-                    const fDate = `${d.getDate().toString().padStart(2,'0')}.${(d.getMonth()+1).toString().padStart(2,'0')}.${d.getFullYear()}r., ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+                    
+                    // FORMATOWANIE DATY: 28.03.2026 22:00
+                    const day = d.getDate().toString().padStart(2, '0');
+                    const month = (d.getMonth() + 1).toString().padStart(2, '0');
+                    const year = d.getFullYear();
+                    const hours = d.getHours().toString().padStart(2, '0');
+                    const minutes = d.getMinutes().toString().padStart(2, '0');
+                    
+                    const formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`;
                     
                     document.getElementById('post-category').innerText = post.category;
                     document.getElementById('post-title').innerText = post.title;
-                    document.getElementById('post-date').innerText = fDate;
+                    document.getElementById('post-date').innerText = formattedDate;
                     document.getElementById('post-lead').innerText = post.excerpt;
                     
                     const body = document.getElementById('post-body');
